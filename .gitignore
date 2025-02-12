@@ -1,0 +1,20 @@
+# Ignore compiled object and binary files
+
+*.o
+*.exe
+
+# Ignore Unity test output files
+
+Unity/src/*.o
+
+
+# Ignore build artifacts
+
+build/
+
+*.a
+*.so
+*.d
+*.out
+.vscode/
+.idea/
