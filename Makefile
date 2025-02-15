@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -IUnity/src -Iinclude  # Include the include folder
+CFLAGS += -I$(PROJECT_DIR)/Unity/src
+  # Include the include folder
 SRCS = src/check_number.c tests/test_checkNumber.c Unity/src/unity.c
 OBJS = $(SRCS:.c=.o)
 TARGET = test_checkNumber.exe
