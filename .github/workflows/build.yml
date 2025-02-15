@@ -1,0 +1,36 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull request to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    
+    steps:
+    - name: Checkout code and initialize submodules
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive  # This will fetch the Unity submodule as well
+    
+    - name: Set up GCC
+      uses: actions/setup-tool@v2
+      with:
+        tool: gcc  # Install GCC (C compiler)
+    
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential  # Install build tools
+    
+    - name: Build the project
+      run: |
+        make  # Run make to compile the project according to the Makefile
+
+    - name: Run tests
+      run: |
+        # Run the tests assuming an executable named 'test_checkNumber.exe'
+        ./tests/test_checkNumber.exe
