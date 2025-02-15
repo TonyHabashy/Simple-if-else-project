@@ -39,7 +39,7 @@ jobs:
     
     - name: Compile tests
       run: |
-        gcc -o tests/test_checkNumber tests/test_checkNumber.c -IUnity/src
+        gcc -o tests/test_checkNumber tests/test_checkNumber.c Unity/src/unity.c src/check_number.c -IUnity/src -I.
 
     - name: Run tests
       run: |
