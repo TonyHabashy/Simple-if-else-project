@@ -36,8 +36,12 @@ jobs:
       run: |
         echo "Running make..."
         make  # Run make to compile the project
-
+        
+    - name: Compile tests
+      run: |
+        gcc -o tests/test_checkNumber tests/test_checkNumber.c
+      
     - name: Run tests
       run: |
         echo "Running tests..."
-        ./tests/test_checkNumber.exe
+        ./tests/test_checkNumber
