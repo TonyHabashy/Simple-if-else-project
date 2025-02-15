@@ -19,7 +19,7 @@ jobs:
         submodules: recursive  # This will fetch the Unity submodule as well
     
     - name: Set up GCC
-      uses: actions/setup-tool@v2
+      uses: actions/setup-gcc@v1
       with:
         tool: gcc  # Install GCC (C compiler)
     
