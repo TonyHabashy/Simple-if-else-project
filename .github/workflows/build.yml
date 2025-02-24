@@ -13,24 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code and initialize submodules
+    - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        submodules: recursive
 
     - name: List files in repository
       run: |
         echo "Listing files in the repository"
         ls -alh
 
-    - name: List files in Unity submodule
-      run: |
-        echo "Listing files in Unity submodule"
-        cd Unity
-        ls -alh
-
     - name: Install GCC and dependencies
       run: sudo apt-get update && sudo apt-get install -y build-essential gcc
+
+    - name: Clone Unity (if needed)
+      run: |
+        if [ ! -d "Unity" ]; then
+          git clone https://github.com/ThrowTheSwitch/Unity.git
+        fi
 
     - name: Build the project
       run: |
